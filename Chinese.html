@@ -1,0 +1,3500 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="position:absolute;left:2%;top:8%;width: 60%;height:80%"></div>
+    <div id="main1" style="position:absolute;left:52%;top:7%;width:48%;height:50%" ></div>
+    <div id="main2" style="position:absolute;left:54%;top:52%;width:40%;height:40%" ></div>
+
+    <!-- ECharts单文件引入 -->
+    <script src="echarts-all.js"></script>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts图表
+         var myChart = echarts.init(document.getElementById('main')); 
+         var myChart1 = echarts.init(document.getElementById('main1')); 
+         var myChart2 = echarts.init(document.getElementById('main2')); 
+
+         var option = {
+    title : {
+        x: 'left',
+        y: 'top',
+        text: '                                 图1  2010年中国各地区人均预期寿命情况（岁）',
+        subtext: '                                                                        数据来自《中国卫生健康统计年鉴2018》'
+    },
+    tooltip : {
+        trigger: 'item'
+    },
+    legend: false,
+    dataRange: {
+        orient: 'vertical',
+        x: 'left',
+        y: 'bottom',
+        min: 68,
+        max: 82,
+        text:[,],           // 文本，默认为数值文本
+        calculable: true,
+        splitNumber:0
+    },
+    toolbox: {
+        show : false,
+        orient: 'vertical',
+        x:'right',
+        y:'center',
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false}
+        }
+    },
+    series : [
+        {
+            name: '2010年人均预期寿命（岁）',
+            type: 'map',
+            mapType: 'china',
+            mapLocation: {
+                x: 'left',
+                y: 'center'
+            },
+            selectedMode : 'single',
+            itemStyle:{
+                normal:{label:{show:true}},
+                emphasis:{label:{show:false}}
+            },
+            data:[
+{name:'北京', value:80.18, selected:false},
+{name:'天津', value:78.89},
+{name:'河北', value:74.97},
+{name:'山西', value:74.92},
+{name:'内蒙古', value:74.44},
+{name:'辽宁', value:76.38},
+{name:'吉林', value:76.18},
+{name:'黑龙江', value:75.98},
+{name:'上海', value:80.26},
+{name:'江苏', value:76.63},
+{name:'浙江', value:77.73},
+{name:'安徽', value:75.08},
+{name:'福建', value:75.76},
+{name:'江西', value:74.33},
+{name:'山东', value:76.46},
+{name:'河南', value:74.57},
+{name:'湖北', value:74.87},
+{name:'湖南', value:74.7},
+{name:'广东', value:76.49},
+{name:'广西', value:75.11},
+{name:'海南', value:76.3},
+{name:'重庆', value:75.7},
+{name:'四川', value:74.75},
+{name:'贵州', value:71.1},
+{name:'云南', value:69.54},
+{name:'西藏', value:68.17},
+{name:'陕西', value:74.68},
+{name:'甘肃', value:72.23},
+{name:'青海', value:69.96},
+{name:'宁夏', value:73.38},
+{name:'新疆', value:72.35}
+            ]
+        },
+    ],
+};
+
+
+optiongd= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: '图2 1990-2010年广东省人均预期寿命情况',
+        subtext: '数据来自《中国卫生健康统计年鉴2018》'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['男性平均预期寿命','女性平均预期寿命','总体平均预期寿命'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990年','2000年','2010年']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'男性平均预期寿命',
+            type:'line',
+            data:[66.84,69.63,72.38]
+        },
+        {
+            name:'女性平均预期寿命',
+            type:'line',
+            data:[70.47, 73.33, 77.37]
+        },
+        {
+            name:'总体平均预期寿命',
+            type:'line',
+            data:[68.55, 71.40, 74.83]
+        }
+    ]
+};
+
+optionbj= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: '图2 1990-2010年北京市人均预期寿命情况',
+        subtext: '数据来自《中国卫生健康统计年鉴2018》'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['男性平均预期寿命','女性平均预期寿命','总体平均预期寿命'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990年','2000年','2010年']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'男性平均预期寿命',
+            type:'line',
+            data:[71.07,74.33,78.28]
+        },
+        {
+            name:'女性平均预期寿命',
+            type:'line',
+            data: [74.93,78.01,82.21]
+
+        },
+        {
+            name:'总体平均预期寿命',
+            type:'line',
+            data:[72.86,76.1,80.18]
+        }
+    ]
+};
+
+optiontj= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: '图2 1990-2010年天津市人均预期寿命情况',
+        subtext: '数据来自《中国卫生健康统计年鉴2018》'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['男性平均预期寿命','女性平均预期寿命','总体平均预期寿命'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990年','2000年','2010年']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'男性平均预期寿命',
+            type:'line',
+            data:[71.03,73.31,77.42]
+
+        },
+        {
+            name:'女性平均预期寿命',
+            type:'line',
+            data: [73.73,76.63,80.48]
+
+
+        },
+        {
+            name:'总体平均预期寿命',
+            type:'line',
+            data:[72.32,74.91,78.89]
+
+        }
+    ]
+};
+
+optionhb1= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: '图2 1990-2010年河北省人均预期寿命情况',
+        subtext: '数据来自《中国卫生健康统计年鉴2018》'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['男性平均预期寿命','女性平均预期寿命','总体平均预期寿命'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990年','2000年','2010年']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'男性平均预期寿命',
+            type:'line',
+            data:[67.33,69.96,72.87]
+
+
+
+        },
+        {
+            name:'女性平均预期寿命',
+            type:'line',
+            data: [70.93,73.57,77.28]
+
+
+
+
+        },
+        {
+            name:'总体平均预期寿命',
+            type:'line',
+            data:[68.97,71.65,74.92]
+
+        }
+    ]
+};
+
+optionsx1= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: '图2 1990-2010年山西省人均预期寿命情况',
+        subtext: '数据来自《中国卫生健康统计年鉴2018》'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['男性平均预期寿命','女性平均预期寿命','总体平均预期寿命'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990年','2000年','2010年']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'男性平均预期寿命',
+            type:'line',
+            data:[67.33,69.96,72.87]
+
+
+
+        },
+        {
+            name:'女性平均预期寿命',
+            type:'line',
+            data: [70.93,73.57,77.28]
+
+
+
+
+        },
+        {
+            name:'总体平均预期寿命',
+            type:'line',
+            data:[68.97,71.65,74.92]
+
+        }
+    ]
+};
+
+optionln= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: '图2 1990-2010年辽宁省人均预期寿命情况',
+        subtext: '数据来自《中国卫生健康统计年鉴2018》'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['男性平均预期寿命','女性平均预期寿命','总体平均预期寿命'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990年','2000年','2010年']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'男性平均预期寿命',
+            type:'line',
+            data:[68.72,71.51,74.12]
+        },
+        {
+            name:'女性平均预期寿命',
+            type:'line',
+            data: [71.94,75.36,78.86]
+        },
+        {
+            name:'总体平均预期寿命',
+            type:'line',
+            data:[70.22,73.34,76.38]
+
+
+        }
+    ]
+};
+
+optionnmg= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: '图2 1990-2010年内蒙古人均预期寿命情况',
+        subtext: '数据来自《中国卫生健康统计年鉴2018》'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['男性平均预期寿命','女性平均预期寿命','总体平均预期寿命'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990年','2000年','2010年']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'男性平均预期寿命',
+            type:'line',
+            data:[64.47,68.29,72.04]
+
+
+
+
+        },
+        {
+            name:'女性平均预期寿命',
+            type:'line',
+            data: [67.22,71.79,77.27]
+
+
+
+
+        },
+        {
+            name:'总体平均预期寿命',
+            type:'line',
+            data:[65.68,69.87,74.44]
+
+
+        }
+    ]
+};
+
+optionjl= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: '图2 1990-2010年吉林人均预期寿命情况',
+        subtext: '数据来自《中国卫生健康统计年鉴2018》'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['男性平均预期寿命','女性平均预期寿命','总体平均预期寿命'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990年','2000年','2010年']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'男性平均预期寿命',
+            type:'line',
+            data:[66.65,71.38,74.12]
+
+        },
+        {
+            name:'女性平均预期寿命',
+            type:'line',
+            data: [69.49,75.04,78.44]
+
+        },
+        {
+            name:'总体平均预期寿命',
+            type:'line',
+            data:[67.95,73.1,76.18]
+
+        }
+    ]
+};
+
+optionhlj= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: '图2 1990-2010年黑龙江人均预期寿命情况',
+        subtext: '数据来自《中国卫生健康统计年鉴2018》'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['男性平均预期寿命','女性平均预期寿命','总体平均预期寿命'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990年','2000年','2010年']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'男性平均预期寿命',
+            type:'line',
+            data:[65.5,70.39,73.52]
+
+        },
+        {
+            name:'女性平均预期寿命',
+            type:'line',
+            data: [68.73,74.66,78.81]
+
+        },
+        {
+            name:'总体平均预期寿命',
+            type:'line',
+            data:[66.97,72.37,75.98]
+
+        }
+    ]
+};
+
+optionsh= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: '图2 1990-2010年上海市人均预期寿命情况',
+        subtext: '数据来自《中国卫生健康统计年鉴2018》'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['男性平均预期寿命','女性平均预期寿命','总体平均预期寿命'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990年','2000年','2010年']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'男性平均预期寿命',
+            type:'line',
+            data:[72.77,76.22,78.2]
+        },
+        {
+            name:'女性平均预期寿命',
+            type:'line',
+            data: [77.02,80.04,82.44]
+
+        },
+        {
+            name:'总体平均预期寿命',
+            type:'line',
+            data: [74.9,78.14,80.26]
+
+        }
+    ]
+};
+
+optionjs= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: '图2 1990-2010年江苏省人均预期寿命情况',
+        subtext: '数据来自《中国卫生健康统计年鉴2018》'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['男性平均预期寿命','女性平均预期寿命','总体平均预期寿命'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990年','2000年','2010年']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'男性平均预期寿命',
+            type:'line',
+            data:[69.26,71.69,74.6]
+        },
+        {
+            name:'女性平均预期寿命',
+            type:'line',
+            data: [73.57,76.23,78.81]
+
+        },
+        {
+            name:'总体平均预期寿命',
+            type:'line',
+            data: [71.37,73.91,76.63]
+
+        }
+    ]
+};
+
+optionzj= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: '图2 1990-2010年浙江省人均预期寿命情况',
+        subtext: '数据来自《中国卫生健康统计年鉴2018》'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['男性平均预期寿命','女性平均预期寿命','总体平均预期寿命'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990年','2000年','2010年']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'男性平均预期寿命',
+            type:'line',
+            data:[69.66,72.5,75.58]
+        },
+        {
+            name:'女性平均预期寿命',
+            type:'line',
+            data: [74.24,77.21,80.21]
+
+        },
+        {
+            name:'总体平均预期寿命',
+            type:'line',
+            data: [71.38,74.7,77.73]
+
+        }
+    ]
+};
+
+optionah= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: '图2 1990-2010年安徽省人均预期寿命情况',
+        subtext: '数据来自《中国卫生健康统计年鉴2018》'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['男性平均预期寿命','女性平均预期寿命','总体平均预期寿命'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990年','2000年','2010年']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'男性平均预期寿命',
+            type:'line',
+            data:[67.75,70.18,72.65]
+        },
+        {
+            name:'女性平均预期寿命',
+            type:'line',
+            data: [71.36,73.59,77.84]
+
+        },
+        {
+            name:'总体平均预期寿命',
+            type:'line',
+            data: [69.48,71.85,75.08]
+
+        }
+    ]
+};
+
+optionfj= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: '图2 1990-2010年福建省人均预期寿命情况',
+        subtext: '数据来自《中国卫生健康统计年鉴2018》'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['男性平均预期寿命','女性平均预期寿命','总体平均预期寿命'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990年','2000年','2010年']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'男性平均预期寿命',
+            type:'line',
+            data:[66.49,70.3,73.27]
+        },
+        {
+            name:'女性平均预期寿命',
+            type:'line',
+            data: [70.93,75.07,78.64]
+
+        },
+        {
+            name:'总体平均预期寿命',
+            type:'line',
+            data: [68.57,72.55,75.76]
+
+        }
+    ]
+};
+
+optionjx= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: '图2 1990-2010年江西省人均预期寿命情况',
+        subtext: '数据来自《中国卫生健康统计年鉴2018》'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['男性平均预期寿命','女性平均预期寿命','总体平均预期寿命'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990年','2000年','2010年']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'男性平均预期寿命',
+            type:'line',
+            data:[64.87,68.37,71.94]
+
+        },
+        {
+            name:'女性平均预期寿命',
+            type:'line',
+            data: [67.49,69.32,77.06]
+
+        },
+        {
+            name:'总体平均预期寿命',
+            type:'line',
+            data: [66.11,68.95,74.33]
+
+        }
+    ]
+};
+
+optionsd= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: '图2 1990-2010年山东省人均预期寿命情况',
+        subtext: '数据来自《中国卫生健康统计年鉴2018》'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['男性平均预期寿命','女性平均预期寿命','总体平均预期寿命'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990年','2000年','2010年']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'男性平均预期寿命',
+            type:'line',
+            data:[68.64,71.7,74.05]
+
+
+        },
+        {
+            name:'女性平均预期寿命',
+            type:'line',
+            data: [72.67,76.26,79.06]
+
+        },
+        {
+            name:'总体平均预期寿命',
+            type:'line',
+            data: [70.57,73.92,76.46]
+
+        }
+    ]
+};
+
+optionhn= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: '图2 1990-2010年河南省人均预期寿命情况',
+        subtext: '数据来自《中国卫生健康统计年鉴2018》'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['男性平均预期寿命','女性平均预期寿命','总体平均预期寿命'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990年','2000年','2010年']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'男性平均预期寿命',
+            type:'line',
+            data:[67.96,69.67,71.84]
+        },
+        {
+            name:'女性平均预期寿命',
+            type:'line',
+            data: [72.55,73.41,77.59]
+
+        },
+        {
+            name:'总体平均预期寿命',
+            type:'line',
+            data: [70.15,71.54,74.57]
+        }
+    ]
+};
+
+optionhubei= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: '图2 1990-2010年湖北省人均预期寿命情况',
+        subtext: '数据来自《中国卫生健康统计年鉴2018》'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['男性平均预期寿命','女性平均预期寿命','总体平均预期寿命'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990年','2000年','2010年']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'男性平均预期寿命',
+            type:'line',
+            data:[65.51,69.31,72.68]
+        },
+        {
+            name:'女性平均预期寿命',
+            type:'line',
+            data: [69.23,73.02,77.35]
+
+        },
+        {
+            name:'总体平均预期寿命',
+            type:'line',
+            data: [67.25,71.08,74.87]
+        }
+    ]
+};
+
+optionhn= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: '图2 1990-2010年湖南省人均预期寿命情况',
+        subtext: '数据来自《中国卫生健康统计年鉴2018》'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['男性平均预期寿命','女性平均预期寿命','总体平均预期寿命'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990年','2000年','2010年']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'男性平均预期寿命',
+            type:'line',
+            data:[65.41,69.05,72.28]
+
+        },
+        {
+            name:'女性平均预期寿命',
+            type:'line',
+            data: [68.7,72.47,77.48]
+
+        },
+        {
+            name:'总体平均预期寿命',
+            type:'line',
+            data: [66.93,70.66,74.7]
+
+        }
+    ]
+};
+
+optiongx= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: '图2 1990-2010年广西省人均预期寿命情况',
+        subtext: '数据来自《中国卫生健康统计年鉴2018》'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['男性平均预期寿命','女性平均预期寿命','总体平均预期寿命'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990年','2000年','2010年']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'男性平均预期寿命',
+            type:'line',
+            data:[67.17,69.07,71.77]
+
+        },
+        {
+            name:'女性平均预期寿命',
+            type:'line',
+            data: [70.34,73.75,79.05]
+
+        },
+        {
+            name:'总体平均预期寿命',
+            type:'line',
+            data: [68.72,71.29,75.11]
+
+
+        }
+    ]
+};
+
+optionhainan= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: '图2 1990-2010年海南省人均预期寿命情况',
+        subtext: '数据来自《中国卫生健康统计年鉴2018》'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['男性平均预期寿命','女性平均预期寿命','总体平均预期寿命'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990年','2000年','2010年']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'男性平均预期寿命',
+            type:'line',
+            data:[66.93,70.66,73.2]
+        },
+        {
+            name:'女性平均预期寿命',
+            type:'line',
+            data: [73.28,75.26,80.01]
+
+        },
+        {
+            name:'总体平均预期寿命',
+            type:'line',
+            data: [70.01,72.92,76.3]
+
+        }
+    ]
+};
+
+optioncq= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: '图2 1990-2010年重庆市人均预期寿命情况',
+        subtext: '数据来自《中国卫生健康统计年鉴2018》'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['男性平均预期寿命','女性平均预期寿命','总体平均预期寿命'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990年','2000年','2010年']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'男性平均预期寿命',
+            type:'line',
+            data:[65.06,69.84,73.16]
+        },
+        {
+            name:'女性平均预期寿命',
+            type:'line',
+            data: [67.7,73.89,78.6]
+        },
+        {
+            name:'总体平均预期寿命',
+            type:'line',
+            data: [66.33,71.73,75.7]
+        }
+    ]
+};
+
+optionsc= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: '图2 1990-2010年四川省人均预期寿命情况',
+        subtext: '数据来自《中国卫生健康统计年鉴2018》'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['男性平均预期寿命','女性平均预期寿命','总体平均预期寿命'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990年','2000年','2010年']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'男性平均预期寿命',
+            type:'line',
+            data:[,69.25,72.25]
+        },
+        {
+            name:'女性平均预期寿命',
+            type:'line',
+            data: [,73.39,77.59]
+        },
+        {
+            name:'总体平均预期寿命',
+            type:'line',
+            data: [,71.20,74.75]
+
+        }
+    ]
+};
+
+
+optionyn= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: '图2 1990-2010年云南省人均预期寿命情况',
+        subtext: '数据来自《中国卫生健康统计年鉴2018》'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['男性平均预期寿命','女性平均预期寿命','总体平均预期寿命'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990年','2000年','2010年']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'男性平均预期寿命',
+            type:'line',
+            data:[62.08,64.24,67.06]
+        },
+        {
+            name:'女性平均预期寿命',
+            type:'line',
+            data: [64.98,66.89,72.43]
+        },
+        {
+            name:'总体平均预期寿命',
+            type:'line',
+            data: [63.49,65.49,69.54]
+
+        }
+    ]
+};
+
+optiongz= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: '图2 1990-2010年贵州人均预期寿命情况',
+        subtext: '数据来自《中国卫生健康统计年鉴2018》'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['男性平均预期寿命','女性平均预期寿命','总体平均预期寿命'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990年','2000年','2010年']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'男性平均预期寿命',
+            type:'line',
+            data:[63.04,64.54,68.43]
+        },
+        {
+            name:'女性平均预期寿命',
+            type:'line',
+            data: [65.63,67.57,74.11]
+        },
+        {
+            name:'总体平均预期寿命',
+            type:'line',
+            data: [64.29,65.96,71.1]
+
+        }
+    ]
+};
+
+optionxz= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: '图2 1990-2010年西藏人均预期寿命情况',
+        subtext: '数据来自《中国卫生健康统计年鉴2018》'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['男性平均预期寿命','女性平均预期寿命','总体平均预期寿命'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990年','2000年','2010年']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 55,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'男性平均预期寿命',
+            type:'line',
+            data:[57.64,62.52,66.33]
+        },
+        {
+            name:'女性平均预期寿命',
+            type:'line',
+            data: [61.57,66.15,70.07]
+
+        },
+        {
+            name:'总体平均预期寿命',
+            type:'line',
+            data: [59.64,64.37,68.17]
+
+        }
+    ]
+};
+
+
+optionshanxi= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: '图2 1990-2010年陕西省人均预期寿命情况',
+        subtext: '数据来自《中国卫生健康统计年鉴2018》'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['男性平均预期寿命','女性平均预期寿命','总体平均预期寿命'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990年','2000年','2010年']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'男性平均预期寿命',
+            type:'line',
+            data:[66.23,68.92,72.84]
+        },
+        {
+            name:'女性平均预期寿命',
+            type:'line',
+            data: [68.79,71.3,76.74]
+
+        },
+        {
+            name:'总体平均预期寿命',
+            type:'line',
+            data: [67.4,70.07,74.68]
+
+        }
+    ]
+};
+
+optiongs= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: '图2 1990-2010年甘肃省人均预期寿命情况',
+        subtext: '数据来自《中国卫生健康统计年鉴2018》'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['男性平均预期寿命','女性平均预期寿命','总体平均预期寿命'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990年','2000年','2010年']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'男性平均预期寿命',
+            type:'line',
+            data:[66.35,66.77,70.6]
+        },
+        {
+            name:'女性平均预期寿命',
+            type:'line',
+            data: [68.25,68.26,74.06]
+
+        },
+        {
+            name:'总体平均预期寿命',
+            type:'line',
+            data: [67.24,67.47,72.23]
+
+        }
+    ]
+};
+
+optionqh= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: '图2 1990-2010年青海人均预期寿命情况',
+        subtext: '数据来自《中国卫生健康统计年鉴2018》'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['男性平均预期寿命','女性平均预期寿命','总体平均预期寿命'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990年','2000年','2010年']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'男性平均预期寿命',
+            type:'line',
+            data:[59.29,64.55,68.11]
+        },
+        {
+            name:'女性平均预期寿命',
+            type:'line',
+            data: [61.96,67.7,72.07]
+
+        },
+        {
+            name:'总体平均预期寿命',
+            type:'line',
+            data: [60.57,66.03,69.96]
+
+
+        }
+    ]
+};
+
+optionnx= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: '图2 1990-2010年宁夏人均预期寿命情况',
+        subtext: '数据来自《中国卫生健康统计年鉴2018》'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['男性平均预期寿命','女性平均预期寿命','总体平均预期寿命'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990年','2000年','2010年']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'男性平均预期寿命',
+            type:'line',
+            data:[65.95,68.71,71.31]
+
+        },
+        {
+            name:'女性平均预期寿命',
+            type:'line',
+            data: [68.05,71.84,75.71]
+
+        },
+        {
+            name:'总体平均预期寿命',
+            type:'line',
+            data: [66.94,70.17,73.38]
+
+        }
+    ]
+};
+
+optionxj= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: '图2 1990-2010年新疆人均预期寿命情况',
+        subtext: '数据来自《中国卫生健康统计年鉴2018》'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['男性平均预期寿命','女性平均预期寿命','总体平均预期寿命'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990年','2000年','2010年']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'男性平均预期寿命',
+            type:'line',
+            data:[61.95,65.98,70.3]
+        },
+        {
+            name:'女性平均预期寿命',
+            type:'line',
+            data: [63.26,69.14,74.86]
+
+        },
+        {
+            name:'总体平均预期寿命',
+            type:'line',
+            data: [63.59,67.41,72.35]
+        }
+    ]
+};
+
+optionqg= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: '图2 1990-2010年全国人均预期寿命情况',
+        subtext: '数据来自《中国卫生健康统计年鉴2018》'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['男性平均预期寿命','女性平均预期寿命','总体平均预期寿命'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990年','2000年','2010年']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'男性平均预期寿命',
+            type:'line',
+            data:[66.84,69.63,72.38]
+        },
+        {
+            name:'女性平均预期寿命',
+            type:'line',
+            data: [70.47,73.33,77.37]
+
+        },
+        {
+            name:'总体平均预期寿命',
+            type:'line',
+            data: [68.55,71.40,74.83]
+
+        }
+    ]
+};
+
+
+    option3qg = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: '图3  2010年全国卫生总费用占GDP百分比',
+                                subtext: '数据来自《中国卫生健康统计年鉴2011》'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'bottom',
+        data:['卫生支出','非卫生支出']
+    },
+    calculable : true,
+    series : [
+        {
+            name:'卫生总费用占GPD百分比',
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '20',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:19980, name:'卫生支出'},{value:401213, name:'非卫生支出'},
+
+
+            ]
+        }
+    ]
+};                
+
+option3bj = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: '图3  2010年北京市卫生总费用占GDP百分比',
+                                subtext: '数据来自《中国卫生健康统计年鉴2011》'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'bottom',
+        data:['卫生支出','非卫生支出']
+    },
+    calculable : true,
+    series : [
+        {
+            name:'卫生总费用占GPD百分比',
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '20',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:814, name:'卫生支出'},{value:14126, name:'非卫生支出'},
+
+
+
+            ]
+        }
+    ]
+};
+
+option3tj = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: '图3  2010年天津市卫生总费用占GDP百分比',
+                                subtext: '数据来自《中国卫生健康统计年鉴2011》'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'bottom',
+        data:['卫生支出','非卫生支出']
+    },
+    calculable : true,
+    series : [
+        {
+            name:'卫生总费用占GPD百分比',
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '20',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:356, name:'卫生支出'},{value:9119, name:'非卫生支出'},
+
+            ]
+        }
+    ]
+};
+
+
+option3hebei = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: '图3  2010年河北省卫生总费用占GDP百分比',
+                                subtext: '数据来自《中国卫生健康统计年鉴2011》'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'bottom',
+        data:['卫生支出','非卫生支出']
+    },
+    calculable : true,
+    series : [
+        {
+            name:'卫生总费用占GPD百分比',
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '20',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:902, name:'卫生支出'},{value:20406, name:'非卫生支出'},
+
+
+            ]
+        }
+    ]
+};
+
+option3shanxi = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: '图3  2010年山西省卫生总费用占GDP百分比',
+                                subtext: '数据来自《中国卫生健康统计年鉴2011》'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'bottom',
+        data:['卫生支出','非卫生支出']
+    },
+    calculable : true,
+    series : [
+        {
+            name:'卫生总费用占GPD百分比',
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '20',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:464, name:'卫生支出'},{value:9201, name:'非卫生支出'},
+
+
+
+            ]
+        }
+    ]
+};
+
+option3nm = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: '图3  2010年内蒙卫生总费用占GDP百分比',
+                                subtext: '数据来自《中国卫生健康统计年鉴2011》'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'bottom',
+        data:['卫生支出','非卫生支出']
+    },
+    calculable : true,
+    series : [
+        {
+            name:'卫生总费用占GPD百分比',
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '20',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:437, name:'卫生支出'},{value:11683, name:'非卫生支出'},
+
+            ]
+        }
+    ]
+};
+
+option3ln = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: '图3  2010年辽宁省卫生总费用占GDP百分比',
+                                subtext: '数据来自《中国卫生健康统计年鉴2011》'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'bottom',
+        data:['卫生支出','非卫生支出']
+    },
+    calculable : true,
+    series : [
+        {
+            name:'卫生总费用占GPD百分比',
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '20',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:773, name:'卫生支出'},{value:18437, name:'非卫生支出'},
+
+            ]
+        }
+    ]
+};
+
+option3jl = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: '图3  2010年吉林省卫生总费用占GDP百分比',
+                                subtext: '数据来自《中国卫生健康统计年鉴2011》'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'bottom',
+        data:['卫生支出','非卫生支出']
+    },
+    calculable : true,
+    series : [
+        {
+            name:'卫生总费用占GPD百分比',
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '20',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:454, name:'卫生支出'},{value:8669, name:'非卫生支出'},
+            ]
+        }
+    ]
+};
+
+option3hlj = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: '图3  2010年黑龙江卫生总费用占GDP百分比',
+                                subtext: '数据来自《中国卫生健康统计年鉴2011》'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'bottom',
+        data:['卫生支出','非卫生支出']
+    },
+    calculable : true,
+    series : [
+        {
+            name:'卫生总费用占GPD百分比',
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '20',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:606, name:'卫生支出'},{value:10373, name:'非卫生支出'},
+
+            ]
+        }
+    ]
+};
+
+option3js = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: '图3  2010年江苏省卫生总费用占GDP百分比',
+                                subtext: '数据来自《中国卫生健康统计年鉴2011》'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'bottom',
+        data:['卫生支出','非卫生支出']
+    },
+    calculable : true,
+    series : [
+        {
+            name:'卫生总费用占GPD百分比',
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '20',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:1232, name:'卫生支出'},{value:41492, name:'非卫生支出'},
+            ]
+        }
+    ]
+};
+
+
+option3zj = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: '图3  2010年浙江省卫生总费用占GDP百分比',
+                                subtext: '数据来自《中国卫生健康统计年鉴2011》'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'bottom',
+        data:['卫生支出','非卫生支出']
+    },
+    calculable : true,
+    series : [
+        {
+            name:'卫生总费用占GPD百分比',
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '20',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:1143, name:'卫生支出'},{value:27750, name:'非卫生支出'},
+            ]
+        }
+    ]
+};
+
+option3ah = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: '图3  2010年安徽省卫生总费用占GDP百分比',
+                                subtext: '数据来自《中国卫生健康统计年鉴2011》'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'bottom',
+        data:['卫生支出','非卫生支出']
+    },
+    calculable : true,
+    series : [
+        {
+            name:'卫生总费用占GPD百分比',
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '20',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:721, name:'卫生支出'},{value:12369, name:'非卫生支出'},
+            ]
+        }
+    ]
+};
+
+option3fj = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: '图3  2010年福建省卫生总费用占GDP百分比',
+                                subtext: '数据来自《中国卫生健康统计年鉴2011》'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'bottom',
+        data:['卫生支出','非卫生支出']
+    },
+    calculable : true,
+    series : [
+        {
+            name:'卫生总费用占GPD百分比',
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '20',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:473, name:'卫生支出'},{value:14727, name:'非卫生支出'},
+            ]
+        }
+    ]
+};
+
+option3jx = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: '图3  2010年江西省卫生总费用占GDP百分比',
+                                subtext: '数据来自《中国卫生健康统计年鉴2011》'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'bottom',
+        data:['卫生支出','非卫生支出']
+    },
+    calculable : true,
+    series : [
+        {
+            name:'卫生总费用占GPD百分比',
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '20',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:443, name:'卫生支出'},{value:9459, name:'非卫生支出'},
+            ]
+        }
+    ]
+};
+
+option3sd = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: '图3  2010年山东省卫生总费用占GDP百分比',
+                                subtext: '数据来自《中国卫生健康统计年鉴2011》'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'bottom',
+        data:['卫生支出','非卫生支出']
+    },
+    calculable : true,
+    series : [
+        {
+            name:'卫生总费用占GPD百分比',
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '20',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:1345, name:'卫生支出'},{value:39222, name:'非卫生支出'},
+            ]
+        }
+    ]
+};
+
+option3hn = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: '图3  2010年河南省卫生总费用占GDP百分比',
+                                subtext: '数据来自《中国卫生健康统计年鉴2011》'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'bottom',
+        data:['卫生支出','非卫生支出']
+    },
+    calculable : true,
+    series : [
+        {
+            name:'卫生总费用占GPD百分比',
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '20',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:1067, name:'卫生支出'},{value:23086, name:'非卫生支出'},
+            ]
+        }
+    ]
+};
+
+
+option3hb = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: '图3  2010年湖北省卫生总费用占GDP百分比',
+                                subtext: '数据来自《中国卫生健康统计年鉴2011》'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'bottom',
+        data:['卫生支出','非卫生支出']
+    },
+    calculable : true,
+    series : [
+        {
+            name:'卫生总费用占GPD百分比',
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '20',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:682, name:'卫生支出'},{value:15967, name:'非卫生支出'},
+            ]
+        }
+    ]
+};
+
+option3hunan = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: '图3  2010年湖南省卫生总费用占GDP百分比',
+                                subtext: '数据来自《中国卫生健康统计年鉴2011》'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'bottom',
+        data:['卫生支出','非卫生支出']
+    },
+    calculable : true,
+    series : [
+        {
+            name:'卫生总费用占GPD百分比',
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '20',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:739, name:'卫生支出'},{value:16025, name:'非卫生支出'},
+            ]
+        }
+    ]
+};
+
+option3gd = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: '图3  2010年广东省卫生总费用占GDP百分比',
+                                subtext: '数据来自《中国卫生健康统计年鉴2011》'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'bottom',
+        data:['卫生支出','非卫生支出']
+    },
+    calculable : true,
+    series : [
+        {
+            name:'卫生总费用占GPD百分比',
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '20',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:1510, name:'卫生支出'},{value:46025, name:'非卫生支出'},
+            ]
+        }
+    ]
+};
+
+option3gx = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: '图3  2010年广西省卫生总费用占GDP百分比',
+                                subtext: '数据来自《中国卫生健康统计年鉴2011》'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'bottom',
+        data:['卫生支出','非卫生支出']
+    },
+    calculable : true,
+    series : [
+        {
+            name:'卫生总费用占GPD百分比',
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '20',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:515, name:'卫生支出'},{value:9570, name:'非卫生支出'},
+            ]
+        }
+    ]
+};
+
+option3cq = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: '图3  2010年重庆市卫生总费用占GDP百分比',
+                                subtext: '数据来自《中国卫生健康统计年鉴2011》'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'bottom',
+        data:['卫生支出','非卫生支出']
+    },
+    calculable : true,
+    series : [
+        {
+            name:'卫生总费用占GPD百分比',
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '20',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:433, name:'卫生支出'},{value:7930, name:'非卫生支出'},
+            ]
+        }
+    ]
+};
+
+option3gz = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: '图3  2010年贵州卫生总费用占GDP百分比',
+                                subtext: '数据来自《中国卫生健康统计年鉴2011》'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'bottom',
+        data:['卫生支出','非卫生支出']
+    },
+    calculable : true,
+    series : [
+        {
+            name:'卫生总费用占GPD百分比',
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '20',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:329, name:'卫生支出'},{value:4600, name:'非卫生支出'},
+            ]
+        }
+    ]
+};
+
+option3yn = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: '图3  2010年云南省卫生总费用占GDP百分比',
+                                subtext: '数据来自《中国卫生健康统计年鉴2011》'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'bottom',
+        data:['卫生支出','非卫生支出']
+    },
+    calculable : true,
+    series : [
+        {
+            name:'卫生总费用占GPD百分比',
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '20',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:509, name:'卫生支出'},{value:7227, name:'非卫生支出'},
+            ]
+        }
+    ]
+};
+
+option3gs = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: '图3  2010年甘肃省卫生总费用占GDP百分比',
+                subtext: '数据来自《中国卫生健康统计年鉴2011》'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'bottom',
+        data:['卫生支出','非卫生支出']
+    },
+    calculable : true,
+    series : [
+        {
+            name:'卫生总费用占GPD百分比',
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '20',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:295, name:'卫生支出'},{value:4120, name:'非卫生支出'},
+            ]
+        }
+    ]
+};
+
+option3xj = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: '图3  2010年新疆卫生总费用占GDP百分比',
+                        subtext: '数据来自《中国卫生健康统计年鉴2011》'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'bottom',
+        data:['卫生支出','非卫生支出']
+    },
+    calculable : true,
+    series : [
+        {
+            name:'卫生总费用占GPD百分比',
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '20',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:323, name:'卫生支出'},{value:4669, name:'非卫生支出'},
+
+            ]
+        }
+    ]
+};
+
+        myChart.setOption(option); 
+         myChart1.setOption(optionqg);
+         myChart2.setOption(option3qg);
+        myChart.on('click', function (params) {
+    if(params.data.name=='广东'){
+        myChart1.setOption(optiongd);
+                 myChart2.setOption(option3gd)
+    }
+    if(params.data.name=='北京'){
+        myChart1.setOption(optionbj);
+        myChart2.setOption(option3bj)}
+    if(params.data.name=='天津'){
+        myChart1.setOption(optiontj);
+                 myChart2.setOption(option3tj)}
+    if(params.data.name=='河北'){
+        myChart1.setOption(optionhb1);
+          myChart2.setOption(option3hebei)
+    }           
+    if(params.data.name=='山西'){
+        myChart1.setOption(optionsx1);
+                  myChart2.setOption(option3shanxi)
+    }
+    if(params.data.name=='内蒙古'){
+        myChart1.setOption(optionnmg);
+             myChart2.setOption(option3nm)}
+    if(params.data.name=='辽宁'){
+        myChart1.setOption(optionln);
+               myChart2.setOption(option3ln);
+    }
+    if(params.data.name=='吉林'){
+        myChart1.setOption(optionjl);
+                      myChart2.setOption(option3jl)}
+    if(params.data.name=='黑龙江'){
+        myChart1.setOption(optionhlj);
+                       myChart2.setOption(option3hlj);
+    }
+    if(params.data.name=='上海'){
+        myChart1.setOption(optionsh)}        
+    if(params.data.name=='江苏'){
+        myChart1.setOption(optionjs);
+                           myChart2.setOption(option3js)} 
+    if(params.data.name=='浙江'){
+        myChart1.setOption(optionzj);
+                                   myChart2.setOption(option3zj)
+    } 
+    if(params.data.name=='安徽'){
+        myChart1.setOption(optionah);
+                                       myChart2.setOption(option3ah)}
+    if(params.data.name=='福建'){
+        myChart1.setOption(optionfj);
+                                               myChart2.setOption(option3fj)
+    }        
+    if(params.data.name=='江西'){
+        myChart1.setOption(optionjx);
+                                    myChart2.setOption(option3jx)
+    }  
+    if(params.data.name=='山东'){
+        myChart1.setOption(optionsd);
+                                    myChart2.setOption(option3sd)
+    }  
+    if(params.data.name=='河南'){
+        myChart1.setOption(optionhn);
+                                     myChart2.setOption(option3hn)
+    }         
+    if(params.data.name=='湖北'){
+        myChart1.setOption(optionhubei);
+                                    myChart2.setOption(option3hb)
+    }         
+    if(params.data.name=='湖南'){
+        myChart1.setOption(optionhn);
+                                            myChart2.setOption(option3hunan)
+    } 
+    if(params.data.name=='广西'){
+        myChart1.setOption(optiongx);
+                             myChart2.setOption(option3gx)
+    } 
+    if(params.data.name=='海南'){
+        myChart1.setOption(optionhainan)} 
+    if(params.data.name=='重庆'){
+        myChart1.setOption(optioncq);
+                myChart2.setOption(option3cq)
+    } 
+    if(params.data.name=='四川'){
+        myChart1.setOption(optionsc)} 
+    if(params.data.name=='贵州'){
+        myChart1.setOption(optiongz);
+                myChart2.setOption(option3gz)
+    } 
+    if(params.data.name=='云南'){
+        myChart1.setOption(optionyn);
+                myChart2.setOption(option3yn)
+    } 
+    if(params.data.name=='西藏'){
+        myChart1.setOption(optionxz)} 
+    if(params.data.name=='陕西'){
+        myChart1.setOption(optionshanxi)} 
+    if(params.data.name=='甘肃'){
+        myChart1.setOption(optiongs);
+     myChart2.setOption(option3gs)
+    } 
+    if(params.data.name=='青海'){
+        myChart1.setOption(optionqh)} 
+    if(params.data.name=='宁夏'){
+        myChart1.setOption(optionnx)} 
+    if(params.data.name=='新疆'){
+        myChart1.setOption(optionxj);
+       myChart2.setOption(option3xj)
+    } 
+
+
+
+        window.addEventListener("resize", function () {
+
+                      option.chart.resize();
+
+                  });
+
+});
+
+
+    </script>
+</body>

@@ -1,0 +1,3542 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="position:absolute;left:2%;top:8%;width: 60%;height:80%"></div>
+    <div id="main1" style="position:absolute;left:52%;top:7%;width:48%;height:50%" ></div>
+    <div id="main2" style="position:absolute;left:45%;top:52%;width:55%;height:40%" ></div>
+
+    <!-- ECharts单文件引入 -->
+    <script src="echarts-all.js"></script>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts图表
+         var myChart = echarts.init(document.getElementById('main')); 
+         var myChart1 = echarts.init(document.getElementById('main1')); 
+         var myChart2 = echarts.init(document.getElementById('main2')); 
+
+         var option = {
+    title : {
+        x: 'left',
+        y: 'top',
+        text: '                  Figure1  Life Expectancy in Different Regions of China in 2010',
+        subtext: '                                        Data comes from the China Health and Family Planning Statistical Digest (2018)'
+    },
+    tooltip : {
+        trigger: 'item'
+    },
+    legend: false,
+    dataRange: {
+        orient: 'vertical',
+        x: 'left',
+        y: 'bottom',
+        min: 68,
+        max: 82,
+        text:[,],           // 文本，默认为数值文本
+        calculable: true,
+        splitNumber:0
+    },
+    toolbox: {
+        show : false,
+        orient: 'vertical',
+        x:'right',
+        y:'center',
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false}
+        }
+    },
+    series : [
+        {
+            name: 'Life Expectancy (Years)',
+            type: 'map',
+            mapType: 'china',
+            mapLocation: {
+                x: 'left',
+                y: 'center'
+            },
+            selectedMode : 'single',
+            itemStyle:{
+                normal:{label:{show:true}},
+                emphasis:{label:{show:false}}
+            },
+             nameMap: {
+                    '新疆': 'Xinjiang',
+                    '江苏': 'Jiangsu',
+                    '重庆': 'Chongqing',
+                    '福建': 'Fujian',
+                    '甘肃': 'Gansu',
+                    '广东': 'Guangdong',
+                    '广西': 'Guangxi',
+                    '贵州': 'Guizhou',
+                    '海南': 'Hainan',
+                    '河北': 'Hebei',
+                    '黑龙江': 'Heilongjiang',
+                    '河南': 'Henan',
+                    '香港': 'Hong Kong',
+                    '湖北': 'Hubei',
+                    '湖南': 'Hunan',
+                    '江苏': 'Jiangsu',
+
+                    '江西': 'Jiangxi',
+                    '吉林': 'Jilin',
+                    '辽宁': 'Liaoning',
+                    '澳门': 'Macau',
+
+                    '内蒙古': 'Inner Mongol',
+                    '宁夏': 'Ningxia',
+                    '青海': 'Qinghai',
+                    '山东': 'Shandong',
+
+                    '山西': 'Shanxi',
+                    '陕西': 'Shan xi',
+                    '上海': 'Shanghai',
+                    '四川': 'Sichuan',   
+
+                    '台湾': 'Taiwan',
+                    '天津': 'Tianjin',
+                    '西藏': 'Tibet',
+                    '新疆': 'Xinjiang',                               
+
+                    '云南': 'Yunnan',
+                    '浙江': 'Zhejiang',
+                    '北京': 'Beijing',
+                    '安徽': 'Anhui',
+                },
+            data:[
+{name:'北京', value:80.18, selected:false},
+{name:'天津', value:78.89},
+{name:'河北', value:74.97},
+{name:'山西', value:74.92},
+{name:'内蒙古', value:74.44},
+{name:'辽宁', value:76.38},
+{name:'吉林', value:76.18},
+{name:'黑龙江', value:75.98},
+{name:'上海', value:80.26},
+{name:'江苏', value:76.63},
+{name:'浙江', value:77.73},
+{name:'安徽', value:75.08},
+{name:'福建', value:75.76},
+{name:'江西', value:74.33},
+{name:'山东', value:76.46},
+{name:'河南', value:74.57},
+{name:'湖北', value:74.87},
+{name:'湖南', value:74.7},
+{name:'广东', value:76.49},
+{name:'广西', value:75.11},
+{name:'海南', value:76.3},
+{name:'重庆', value:75.7},
+{name:'四川', value:74.75},
+{name:'贵州', value:71.1},
+{name:'云南', value:69.54},
+{name:'西藏', value:68.17},
+{name:'陕西', value:74.68},
+{name:'甘肃', value:72.23},
+{name:'青海', value:69.96},
+{name:'宁夏', value:73.38},
+{name:'新疆', value:72.35}
+            ]
+        },
+    ],
+};
+
+
+optiongd= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: 'Figure2  Life expectancy of Guangdong Province from 1990 to 2010',
+        subtext: 'Data comes from the China Health and Family Planning Statistical Digest (2018)' },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Life Expectancy of Male','Life Expectancy of Female','Average Life Expectancy'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990','2000','2010']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'Life Expectancy of Male',
+            type:'line',
+            data:[66.84,69.63,72.38]
+        },
+        {
+            name:'Life Expectancy of Female',
+            type:'line',
+            data:[70.47, 73.33, 77.37]
+        },
+        {
+            name:'Average Life Expectancy',
+            type:'line',
+            data:[68.55, 71.40, 74.83]
+        }
+    ]
+};
+
+optionbj= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: 'Figure2  Life expectancy of Beijing from 1990 to 2010',
+        subtext: 'Data comes from the China Health and Family Planning Statistical Digest (2018)'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Life Expectancy of Male','Life Expectancy of Female','Average Life Expectancy'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990','2000','2010']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'Life Expectancy of Male',
+            type:'line',
+            data:[71.07,74.33,78.28]
+        },
+        {
+            name:'Life Expectancy of Female',
+            type:'line',
+            data: [74.93,78.01,82.21]
+
+        },
+        {
+            name:'Average Life Expectancy',
+            type:'line',
+            data:[72.86,76.1,80.18]
+        }
+    ]
+};
+
+optiontj= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: 'Figure2  Life expectancy of Tianjin from 1990 to 2010',
+        subtext: 'Data comes from the China Health and Family Planning Statistical Digest (2018)'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Life Expectancy of Male','Life Expectancy of Female','Average Life Expectancy'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990','2000','2010']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'Life Expectancy of Male',
+            type:'line',
+            data:[71.03,73.31,77.42]
+
+        },
+        {
+            name:'Life Expectancy of Female',
+            type:'line',
+            data: [73.73,76.63,80.48]
+
+
+        },
+        {
+            name:'Average Life Expectancy',
+            type:'line',
+            data:[72.32,74.91,78.89]
+
+        }
+    ]
+};
+
+optionhb1= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: 'Figure2  Life expectancy of Hebei Province from 1990 to 2010',
+        subtext: 'Data comes from the China Health and Family Planning Statistical Digest (2018)'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Life Expectancy of Male','Life Expectancy of Female','Average Life Expectancy'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990','2000','2010']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'Life Expectancy of Male',
+            type:'line',
+            data:[67.33,69.96,72.87]
+
+
+
+        },
+        {
+            name:'Life Expectancy of Female',
+            type:'line',
+            data: [70.93,73.57,77.28]
+
+
+
+
+        },
+        {
+            name:'Average Life Expectancy',
+            type:'line',
+            data:[68.97,71.65,74.92]
+
+        }
+    ]
+};
+
+optionsx1= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: 'Figure2  Life expectancy of Shanxi Province from 1990 to 2010',
+        subtext: 'Data comes from the China Health and Family Planning Statistical Digest (2018)'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Life Expectancy of Male','Life Expectancy of Female','Average Life Expectancy'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990','2000','2010']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'Life Expectancy of Male',
+            type:'line',
+            data:[67.33,69.96,72.87]
+
+
+
+        },
+        {
+            name:'Life Expectancy of Female',
+            type:'line',
+            data: [70.93,73.57,77.28]
+
+
+
+
+        },
+        {
+            name:'Average Life Expectancy',
+            type:'line',
+            data:[68.97,71.65,74.92]
+
+        }
+    ]
+};
+
+optionln= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: 'Figure2  Life expectancy of Liaoning Province from 1990 to 2010',
+        subtext: 'Data comes from the China Health and Family Planning Statistical Digest (2018)'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Life Expectancy of Male','Life Expectancy of Female','Average Life Expectancy'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990','2000','2010']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'Life Expectancy of Male',
+            type:'line',
+            data:[68.72,71.51,74.12]
+        },
+        {
+            name:'Life Expectancy of Female',
+            type:'line',
+            data: [71.94,75.36,78.86]
+        },
+        {
+            name:'Average Life Expectancy',
+            type:'line',
+            data:[70.22,73.34,76.38]
+
+
+        }
+    ]
+};
+
+optionnmg= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: 'Figure2  Life expectancy of In Province from 1990 to 2010',
+        subtext: 'Data comes from the China Health and Family Planning Statistical Digest (2018)'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Life Expectancy of Male','Life Expectancy of Female','Average Life Expectancy'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990年','2000年','2010年']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'Life Expectancy of Male',
+            type:'line',
+            data:[64.47,68.29,72.04]
+
+
+
+
+        },
+        {
+            name:'Life Expectancy of Female',
+            type:'line',
+            data: [67.22,71.79,77.27]
+
+
+
+
+        },
+        {
+            name:'Average Life Expectancy',
+            type:'line',
+            data:[65.68,69.87,74.44]
+
+
+        }
+    ]
+};
+
+optionjl= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: 'Figure2  Life expectancy of Jilin Province from 1990 to 2010',
+        subtext: 'Data comes from the China Health and Family Planning Statistical Digest (2018)'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Life Expectancy of Male','Life Expectancy of Female','Average Life Expectancy'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990','2000','2010']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'Life Expectancy of Male',
+            type:'line',
+            data:[66.65,71.38,74.12]
+
+        },
+        {
+            name:'Life Expectancy of Female',
+            type:'line',
+            data: [69.49,75.04,78.44]
+
+        },
+        {
+            name:'Average Life Expectancy',
+            type:'line',
+            data:[67.95,73.1,76.18]
+
+        }
+    ]
+};
+
+optionhlj= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: 'Figure2  Life expectancy of Heilongjiang Province from 1990 to 2010',
+        subtext: 'Data comes from the China Health and Family Planning Statistical Digest (2018)'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Life Expectancy of Male','Life Expectancy of Female','Average Life Expectancy'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990','2000','2010']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'Life Expectancy of Male',
+            type:'line',
+            data:[65.5,70.39,73.52]
+
+        },
+        {
+            name:'Life Expectancy of Female',
+            type:'line',
+            data: [68.73,74.66,78.81]
+
+        },
+        {
+            name:'Average Life Expectancy',
+            type:'line',
+            data:[66.97,72.37,75.98]
+
+        }
+    ]
+};
+
+optionsh= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: 'Figure2  Life expectancy of Shanghai from 1990 to 2010',
+        subtext: 'Data comes from the China Health and Family Planning Statistical Digest (2018)'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Life Expectancy of Male','Life Expectancy of Female','Average Life Expectancy'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990','2000','2010']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'Life Expectancy of Male',
+            type:'line',
+            data:[72.77,76.22,78.2]
+        },
+        {
+            name:'Life Expectancy of Female',
+            type:'line',
+            data: [77.02,80.04,82.44]
+
+        },
+        {
+            name:'Average Life Expectancy',
+            type:'line',
+            data: [74.9,78.14,80.26]
+
+        }
+    ]
+};
+
+optionjs= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: 'Figure2  Life expectancy of Jiangsu Province from 1990 to 2010',
+        subtext: 'Data comes from the China Health and Family Planning Statistical Digest (2018)'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Life Expectancy of Male','Life Expectancy of Female','Average Life Expectancy'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990','2000','2010']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'Life Expectancy of Male',
+            type:'line',
+            data:[69.26,71.69,74.6]
+        },
+        {
+            name:'Life Expectancy of Female',
+            type:'line',
+            data: [73.57,76.23,78.81]
+
+        },
+        {
+            name:'Average Life Expectancy',
+            type:'line',
+            data: [71.37,73.91,76.63]
+
+        }
+    ]
+};
+
+optionzj= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: 'Figure2  Life expectancy of Zhejiang Province from 1990 to 2010',
+        subtext: 'Data comes from the China Health and Family Planning Statistical Digest (2018)'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Life Expectancy of Male','Life Expectancy of Female','Average Life Expectancy'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990','2000','2010']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'Life Expectancy of Male',
+            type:'line',
+            data:[69.66,72.5,75.58]
+        },
+        {
+            name:'Life Expectancy of Female',
+            type:'line',
+            data: [74.24,77.21,80.21]
+
+        },
+        {
+            name:'Average Life Expectancy',
+            type:'line',
+            data: [71.38,74.7,77.73]
+
+        }
+    ]
+};
+
+optionah= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: 'Figure2  Life expectancy of Anhui Province from 1990 to 2010',
+        subtext: 'Data comes from the China Health and Family Planning Statistical Digest (2018)'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Life Expectancy of Male','Life Expectancy of Female','Average Life Expectancy'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990','2000','2010']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'Life Expectancy of Male',
+            type:'line',
+            data:[67.75,70.18,72.65]
+        },
+        {
+            name:'Life Expectancy of Female',
+            type:'line',
+            data: [71.36,73.59,77.84]
+
+        },
+        {
+            name:'Average Life Expectancy',
+            type:'line',
+            data: [69.48,71.85,75.08]
+
+        }
+    ]
+};
+
+optionfj= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: 'Figure2  Life expectancy of Fujian Province from 1990 to 2010',
+        subtext: 'Data comes from the China Health and Family Planning Statistical Digest (2018)'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Life Expectancy of Male','Life Expectancy of Female','Average Life Expectancy'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990','2000','2010']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'Life Expectancy of Male',
+            type:'line',
+            data:[66.49,70.3,73.27]
+        },
+        {
+            name:'Life Expectancy of Female',
+            type:'line',
+            data: [70.93,75.07,78.64]
+
+        },
+        {
+            name:'Average Life Expectancy',
+            type:'line',
+            data: [68.57,72.55,75.76]
+
+        }
+    ]
+};
+
+optionjx= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: 'Figure2  Life expectancy of Jiangxi Province from 1990 to 2010',
+        subtext: 'Data comes from the China Health and Family Planning Statistical Digest (2018)'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Life Expectancy of Male','Life Expectancy of Female','Average Life Expectancy'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990','2000','2010']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'Life Expectancy of Male',
+            type:'line',
+            data:[64.87,68.37,71.94]
+
+        },
+        {
+            name:'Life Expectancy of Female',
+            type:'line',
+            data: [67.49,69.32,77.06]
+
+        },
+        {
+            name:'Average Life Expectancy',
+            type:'line',
+            data: [66.11,68.95,74.33]
+
+        }
+    ]
+};
+
+optionsd= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: 'Figure2  Life expectancy of Shandong Province from 1990 to 2010',
+        subtext: 'Data comes from the China Health and Family Planning Statistical Digest (2018)'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Life Expectancy of Male','Life Expectancy of Female','Average Life Expectancy'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990','2000','2010']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'Life Expectancy of Male',
+            type:'line',
+            data:[68.64,71.7,74.05]
+
+
+        },
+        {
+            name:'Life Expectancy of Female',
+            type:'line',
+            data: [72.67,76.26,79.06]
+
+        },
+        {
+            name:'Average Life Expectancy',
+            type:'line',
+            data: [70.57,73.92,76.46]
+
+        }
+    ]
+};
+
+optionhn= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: 'Figure2  Life expectancy of Henan Province from 1990 to 2010',
+        subtext: 'Data comes from the China Health and Family Planning Statistical Digest (2018)'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Life Expectancy of Male','Life Expectancy of Female','Average Life Expectancy'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990','2000','2010']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'Life Expectancy of Male',
+            type:'line',
+            data:[67.96,69.67,71.84]
+        },
+        {
+            name:'Life Expectancy of Female',
+            type:'line',
+            data: [72.55,73.41,77.59]
+
+        },
+        {
+            name:'Average Life Expectancy',
+            type:'line',
+            data: [70.15,71.54,74.57]
+        }
+    ]
+};
+
+optionhubei= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: 'Figure2  Life expectancy of Hubei Province from 1990 to 2010',
+        subtext: 'Data comes from the China Health and Family Planning Statistical Digest (2018)'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Life Expectancy of Male','Life Expectancy of Female','Average Life Expectancy'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990','2000','2010']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'Life Expectancy of Male',
+            type:'line',
+            data:[65.51,69.31,72.68]
+        },
+        {
+            name:'Life Expectancy of Female',
+            type:'line',
+            data: [69.23,73.02,77.35]
+
+        },
+        {
+            name:'Average Life Expectancy',
+            type:'line',
+            data: [67.25,71.08,74.87]
+        }
+    ]
+};
+
+optionhn= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: 'Figure2  Life expectancy of Hunan Province from 1990 to 2010',
+        subtext: 'Data comes from the China Health and Family Planning Statistical Digest (2018)'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Life Expectancy of Male','Life Expectancy of Female','Average Life Expectancy'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990','2000','2010']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'Life Expectancy of Male',
+            type:'line',
+            data:[65.41,69.05,72.28]
+
+        },
+        {
+            name:'Life Expectancy of Female',
+            type:'line',
+            data: [68.7,72.47,77.48]
+
+        },
+        {
+            name:'Average Life Expectancy',
+            type:'line',
+            data: [66.93,70.66,74.7]
+
+        }
+    ]
+};
+
+optiongx= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: 'Figure2  Life expectancy of Guangxi Province from 1990 to 2010',
+        subtext: 'Data comes from the China Health and Family Planning Statistical Digest (2018)'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Life Expectancy of Male','Life Expectancy of Female','Average Life Expectancy'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990','2000','2010']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'Life Expectancy of Male',
+            type:'line',
+            data:[67.17,69.07,71.77]
+
+        },
+        {
+            name:'Life Expectancy of Female',
+            type:'line',
+            data: [70.34,73.75,79.05]
+
+        },
+        {
+            name:'Average Life Expectancy',
+            type:'line',
+            data: [68.72,71.29,75.11]
+
+
+        }
+    ]
+};
+
+optionhainan= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: 'Figure2  Life expectancy of Hainan Province from 1990 to 2010',
+        subtext: 'Data comes from the China Health and Family Planning Statistical Digest (2018)'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Life Expectancy of Male','Life Expectancy of Female','Average Life Expectancy'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990','2000','2010']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'Life Expectancy of Male',
+            type:'line',
+            data:[66.93,70.66,73.2]
+        },
+        {
+            name:'Life Expectancy of Female',
+            type:'line',
+            data: [73.28,75.26,80.01]
+
+        },
+        {
+            name:'Average Life Expectancy',
+            type:'line',
+            data: [70.01,72.92,76.3]
+
+        }
+    ]
+};
+
+optioncq= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: 'Figure2  Life expectancy of Chongqing from 1990 to 2010',
+        subtext: 'Data comes from the China Health and Family Planning Statistical Digest (2018)'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Life Expectancy of Male','Life Expectancy of Female','Average Life Expectancy'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990','2000','2010']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'Life Expectancy of Male',
+            type:'line',
+            data:[65.06,69.84,73.16]
+        },
+        {
+            name:'Life Expectancy of Female',
+            type:'line',
+            data: [67.7,73.89,78.6]
+        },
+        {
+            name:'Average Life Expectancy',
+            type:'line',
+            data: [66.33,71.73,75.7]
+        }
+    ]
+};
+
+optionsc= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: 'Figure2  Life expectancy of Sichuan Province from 1990 to 2010',
+        subtext: 'Data comes from the China Health and Family Planning Statistical Digest (2018)'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Life Expectancy of Male','Life Expectancy of Female','Average Life Expectancy'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990','2000','2010']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'Life Expectancy of Male',
+            type:'line',
+            data:[,69.25,72.25]
+        },
+        {
+            name:'Life Expectancy of Female',
+            type:'line',
+            data: [,73.39,77.59]
+        },
+        {
+            name:'Average Life Expectancy',
+            type:'line',
+            data: [,71.20,74.75]
+
+        }
+    ]
+};
+
+
+optionyn= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: 'Figure2  Life expectancy of Yunnan Province from 1990 to 2010',
+        subtext: 'Data comes from the China Health and Family Planning Statistical Digest (2018)'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Life Expectancy of Male','Life Expectancy of Female','Average Life Expectancy'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990','2000','2010']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'Life Expectancy of Male',
+            type:'line',
+            data:[62.08,64.24,67.06]
+        },
+        {
+            name:'Life Expectancy of Female',
+            type:'line',
+            data: [64.98,66.89,72.43]
+        },
+        {
+            name:'Average Life Expectancy',
+            type:'line',
+            data: [63.49,65.49,69.54]
+
+        }
+    ]
+};
+
+optiongz= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: 'Figure2  Life expectancy of Guizhou Province from 1990 to 2010',
+        subtext: 'Data comes from the China Health and Family Planning Statistical Digest (2018)'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Life Expectancy of Male','Life Expectancy of Female','Average Life Expectancy'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990','2000','2010']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'Life Expectancy of Male',
+            type:'line',
+            data:[63.04,64.54,68.43]
+        },
+        {
+            name:'Life Expectancy of Female',
+            type:'line',
+            data: [65.63,67.57,74.11]
+        },
+        {
+            name:'Average Life Expectancy',
+            type:'line',
+            data: [64.29,65.96,71.1]
+
+        }
+    ]
+};
+
+optionxz= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: 'Figure2  Life expectancy of Tibet from 1990 to 2010',
+        subtext: 'Data comes from the China Health and Family Planning Statistical Digest (2018)'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Life Expectancy of Male','Life Expectancy of Female','Average Life Expectancy'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990','2000','2010']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 55,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'Life Expectancy of Male',
+            type:'line',
+            data:[57.64,62.52,66.33]
+        },
+        {
+            name:'Life Expectancy of Female',
+            type:'line',
+            data: [61.57,66.15,70.07]
+
+        },
+        {
+            name:'Average Life Expectancy',
+            type:'line',
+            data: [59.64,64.37,68.17]
+
+        }
+    ]
+};
+
+
+optionshanxi= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: 'Figure2  Life expectancy of Shan xi Province from 1990 to 2010',
+        subtext: 'Data comes from the China Health and Family Planning Statistical Digest (2018)'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Life Expectancy of Male','Life Expectancy of Female','Average Life Expectancy'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990','2000','2010']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'Life Expectancy of Male',
+            type:'line',
+            data:[66.23,68.92,72.84]
+        },
+        {
+            name:'Life Expectancy of Female',
+            type:'line',
+            data: [68.79,71.3,76.74]
+
+        },
+        {
+            name:'Average Life Expectancy',
+            type:'line',
+            data: [67.4,70.07,74.68]
+
+        }
+    ]
+};
+
+optiongs= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: 'Figure2  Life expectancy of Gansu Province from 1990 to 2010',
+        subtext: 'Data comes from the China Health and Family Planning Statistical Digest (2018)'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Life Expectancy of Male','Life Expectancy of Female','Average Life Expectancy'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990','2000','2010']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'Life Expectancy of Male',
+            type:'line',
+            data:[66.35,66.77,70.6]
+        },
+        {
+            name:'Life Expectancy of Female',
+            type:'line',
+            data: [68.25,68.26,74.06]
+
+        },
+        {
+            name:'Average Life Expectancy',
+            type:'line',
+            data: [67.24,67.47,72.23]
+
+        }
+    ]
+};
+
+optionqh= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: 'Figure2  Life expectancy of Qinghai from 1990 to 2010',
+        subtext: 'Data comes from the China Health and Family Planning Statistical Digest (2018)'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Life Expectancy of Male','Life Expectancy of Female','Average Life Expectancy'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990','2000','2010']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'Life Expectancy of Male',
+            type:'line',
+            data:[59.29,64.55,68.11]
+        },
+        {
+            name:'Life Expectancy of Female',
+            type:'line',
+            data: [61.96,67.7,72.07]
+
+        },
+        {
+            name:'Average Life Expectancy',
+            type:'line',
+            data: [60.57,66.03,69.96]
+
+
+        }
+    ]
+};
+
+optionnx= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: 'Figure2  Life expectancy of Ningxia from 1990 to 2010',
+        subtext: 'Data comes from the China Health and Family Planning Statistical Digest (2018)'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Life Expectancy of Male','Life Expectancy of Female','Average Life Expectancy'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990','2000','2010']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'Life Expectancy of Male',
+            type:'line',
+            data:[65.95,68.71,71.31]
+
+        },
+        {
+            name:'Life Expectancy of Female',
+            type:'line',
+            data: [68.05,71.84,75.71]
+
+        },
+        {
+            name:'Average Life Expectancy',
+            type:'line',
+            data: [66.94,70.17,73.38]
+
+        }
+    ]
+};
+
+optionxj= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: 'Figure2  Life expectancy of Xinjiang from 1990 to 2010',
+        subtext: 'Data comes from the China Health and Family Planning Statistical Digest (2018)'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Life Expectancy of Male','Life Expectancy of Female','Average Life Expectancy'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990','2000','2010']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'Life Expectancy of Male',
+            type:'line',
+            data:[61.95,65.98,70.3]
+        },
+        {
+            name:'Life Expectancy of Female',
+            type:'line',
+            data: [63.26,69.14,74.86]
+
+        },
+        {
+            name:'Average Life Expectancy',
+            type:'line',
+            data: [63.59,67.41,72.35]
+        }
+    ]
+};
+
+optionqg= {
+        title : {
+        x:'center',
+        y: 'left',
+        text: 'Figure2  Life expectancy of China from 1990 to 2010',
+        subtext: 'Data comes from the China Health and Family Planning Statistical Digest (2018)'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['Life Expectancy of Male','Life Expectancy of Female','Average Life Expectancy'],
+        orient: 'horizontal',
+        x: 'center',
+        y: 75
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['1990','2000','2010']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 60,
+            max: 90
+        }
+    ],
+    series : [
+        {
+            name:'Life Expectancy of Male',
+            type:'line',
+            data:[66.84,69.63,72.38]
+        },
+        {
+            name:'Life Expectancy of Female',
+            type:'line',
+            data: [70.47,73.33,77.37]
+
+        },
+        {
+            name:'Average Life Expectancy',
+            type:'line',
+            data: [68.55,71.40,74.83]
+
+        }
+    ]
+};
+
+
+    option3qg = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: 'Figure3  Health Expenditure and its Proportion of the GDP of China in 2010',
+        subtext: 'Data comes from China Health and Family Planning Statistical Yearbook (2011)'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'center',
+        data:['Health Expenditure','Non-health Expenditure']
+    },
+    calculable : true,
+    series : [
+        {
+            
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '10',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:19980, name:'Health Expenditure'},{value:401213, name:'Non-health Expenditure'},
+
+
+            ]
+        }
+    ]
+};                
+
+option3bj = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: 'Figure3  Health Expenditure and its Proportion of the GDP of Beijing in 2010',
+                subtext: 'Data comes from China Health and Family Planning Statistical Yearbook (2011)'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'center',
+        data:['Health Expenditure','Non-health Expenditure']
+    },
+    calculable : true,
+    series : [
+        {
+            
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '10',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:814, name:'Health Expenditure'},{value:14126, name:'Non-health Expenditure'},
+
+
+
+            ]
+        }
+    ]
+};
+
+option3tj = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: 'Figure3  Health Expenditure and its Proportion of the GDP of Tianjin Province in 2010',
+                subtext: 'Data comes from China Health and Family Planning Statistical Yearbook (2011)'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'center',
+        data:['Health Expenditure','Non-health Expenditure']
+    },
+    calculable : true,
+    series : [
+        {
+            
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '10',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:356, name:'Health Expenditure'},{value:9119, name:'Non-health Expenditure'},
+
+            ]
+        }
+    ]
+};
+
+
+option3hebei = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: 'Figure3  Health Expenditure and its Proportion of the GDP of Hebei Province in 2010',
+                subtext: 'Data comes from China Health and Family Planning Statistical Yearbook (2011)'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'center',
+        data:['Health Expenditure','Non-health Expenditure']
+    },
+    calculable : true,
+    series : [
+        {
+            
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '10',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:902, name:'Health Expenditure'},{value:20406, name:'Non-health Expenditure'},
+
+
+            ]
+        }
+    ]
+};
+
+option3shanxi = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: 'Figure3  Health Expenditure and its Proportion of the GDP of Shanxi Province in 2010',
+                subtext: 'Data comes from China Health and Family Planning Statistical Yearbook (2011)'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'center',
+        data:['Health Expenditure','Non-health Expenditure']
+    },
+    calculable : true,
+    series : [
+        {
+            
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '10',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:464, name:'Health Expenditure'},{value:9201, name:'Non-health Expenditure'},
+
+
+
+            ]
+        }
+    ]
+};
+
+option3nm = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: 'Figure3  Health Expenditure and its Proportion of the GDP of Inner Mongol in 2010',
+                subtext: 'Data comes from China Health and Family Planning Statistical Yearbook (2011)'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'center',
+        data:['Health Expenditure','Non-health Expenditure']
+    },
+    calculable : true,
+    series : [
+        {
+            
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '10',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:437, name:'Health Expenditure'},{value:11683, name:'Non-health Expenditure'},
+
+            ]
+        }
+    ]
+};
+
+option3ln = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: 'Figure3  Health Expenditure and its Proportion of the GDP of Liaoning Province in 2010',
+                subtext: 'Data comes from China Health and Family Planning Statistical Yearbook (2011)'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'center',
+        data:['Health Expenditure','Non-health Expenditure']
+    },
+    calculable : true,
+    series : [
+        {
+            
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '10',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:773, name:'Health Expenditure'},{value:18437, name:'Non-health Expenditure'},
+
+            ]
+        }
+    ]
+};
+
+option3jl = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: 'Figure3  Health Expenditure and its Proportion of the GDP of Jilin Province in 2010',
+                subtext: 'Data comes from China Health and Family Planning Statistical Yearbook (2011)'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'center',
+        data:['Health Expenditure','Non-health Expenditure']
+    },
+    calculable : true,
+    series : [
+        {
+            
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '10',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:454, name:'Health Expenditure'},{value:8669, name:'Non-health Expenditure'},
+            ]
+        }
+    ]
+};
+
+option3hlj = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: 'Figure3  Health Expenditure and its Proportion of the GDP of Heilongjiang Province in 2010',
+                subtext: 'Data comes from China Health and Family Planning Statistical Yearbook (2011)'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'center',
+        data:['Health Expenditure','Non-health Expenditure']
+    },
+    calculable : true,
+    series : [
+        {
+            
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '10',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:606, name:'Health Expenditure'},{value:10373, name:'Non-health Expenditure'},
+
+            ]
+        }
+    ]
+};
+
+option3js = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: 'Figure3  Health Expenditure and its Proportion of the GDP of Jiangsu Province in 2010',
+                subtext: 'Data comes from China Health and Family Planning Statistical Yearbook (2011)'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'center',
+        data:['Health Expenditure','Non-health Expenditure']
+    },
+    calculable : true,
+    series : [
+        {
+            
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '10',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:1232, name:'Health Expenditure'},{value:41492, name:'Non-health Expenditure'},
+            ]
+        }
+    ]
+};
+
+
+option3zj = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: 'Figure3  Health Expenditure and its Proportion of the GDP of Zhejiang Province in 2010',
+                subtext: 'Data comes from China Health and Family Planning Statistical Yearbook (2011)'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'center',
+        data:['Health Expenditure','Non-health Expenditure']
+    },
+    calculable : true,
+    series : [
+        {
+            
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '10',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:1143, name:'Health Expenditure'},{value:27750, name:'Non-health Expenditure'},
+            ]
+        }
+    ]
+};
+
+option3ah = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: 'Figure3  Health Expenditure and its Proportion of the GDP of Anhui Province in 2010',
+                subtext: 'Data comes from China Health and Family Planning Statistical Yearbook (2011)'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'center',
+        data:['Health Expenditure','Non-health Expenditure']
+    },
+    calculable : true,
+    series : [
+        {
+            
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '10',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:721, name:'Health Expenditure'},{value:12369, name:'Non-health Expenditure'},
+            ]
+        }
+    ]
+};
+
+option3fj = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: 'Figure3  Health Expenditure and its Proportion of the GDP of Fujian Province in 2010',
+                subtext: 'Data comes from China Health and Family Planning Statistical Yearbook (2011)'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'center',
+        data:['Health Expenditure','Non-health Expenditure']
+    },
+    calculable : true,
+    series : [
+        {
+            
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '10',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:473, name:'Health Expenditure'},{value:14727, name:'Non-health Expenditure'},
+            ]
+        }
+    ]
+};
+
+option3jx = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: 'Figure3  Health Expenditure and its Proportion of the GDP of Jiangxi Province in 2010',
+                subtext: 'Data comes from China Health and Family Planning Statistical Yearbook (2011)'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'center',
+        data:['Health Expenditure','Non-health Expenditure']
+    },
+    calculable : true,
+    series : [
+        {
+            
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '10',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:443, name:'Health Expenditure'},{value:9459, name:'Non-health Expenditure'},
+            ]
+        }
+    ]
+};
+
+option3sd = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: 'Figure3  Health Expenditure and its Proportion of the GDP of Shandong Province in 2010',
+                subtext: 'Data comes from China Health and Family Planning Statistical Yearbook (2011)'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'center',
+        data:['Health Expenditure','Non-health Expenditure']
+    },
+    calculable : true,
+    series : [
+        {
+            
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '10',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:1345, name:'Health Expenditure'},{value:39222, name:'Non-health Expenditure'},
+            ]
+        }
+    ]
+};
+
+option3hn = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: 'Figure3  Health Expenditure and its Proportion of the GDP of Henan Province in 2010',
+                subtext: 'Data comes from China Health and Family Planning Statistical Yearbook (2011)'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'center',
+        data:['Health Expenditure','Non-health Expenditure']
+    },
+    calculable : true,
+    series : [
+        {
+            
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '10',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:1067, name:'Health Expenditure'},{value:23086, name:'Non-health Expenditure'},
+            ]
+        }
+    ]
+};
+
+
+option3hb = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: 'Figure3  Health Expenditure and its Proportion of the GDP of Hubei Province in 2010',
+                subtext: 'Data comes from China Health and Family Planning Statistical Yearbook (2011)'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'center',
+        data:['Health Expenditure','Non-health Expenditure']
+    },
+    calculable : true,
+    series : [
+        {
+            
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '10',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:682, name:'Health Expenditure'},{value:15967, name:'Non-health Expenditure'},
+            ]
+        }
+    ]
+};
+
+option3hunan = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: 'Figure3  Health Expenditure and its Proportion of the GDP of Hunan Province in 2010',
+                subtext: 'Data comes from China Health and Family Planning Statistical Yearbook (2011)'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'center',
+        data:['Health Expenditure','Non-health Expenditure']
+    },
+    calculable : true,
+    series : [
+        {
+            
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '10',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:739, name:'Health Expenditure'},{value:16025, name:'Non-health Expenditure'},
+            ]
+        }
+    ]
+};
+
+option3gd = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: 'Figure3  Health Expenditure and its Proportion of the GDP of Guangdong Province in 2010',
+                subtext: 'Data comes from China Health and Family Planning Statistical Yearbook (2011)'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'center',
+        data:['Health Expenditure','Non-health Expenditure']
+    },
+    calculable : true,
+    series : [
+        {
+            
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '10',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:1510, name:'Health Expenditure'},{value:46025, name:'Non-health Expenditure'},
+            ]
+        }
+    ]
+};
+
+option3gx = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: 'Figure3  Health Expenditure and its Proportion of the GDP of Guangxi Province in 2010',
+                subtext: 'Data comes from China Health and Family Planning Statistical Yearbook (2011)'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'center',
+        data:['Health Expenditure','Non-health Expenditure']
+    },
+    calculable : true,
+    series : [
+        {
+            
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '10',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:515, name:'Health Expenditure'},{value:9570, name:'Non-health Expenditure'},
+            ]
+        }
+    ]
+};
+
+option3cq = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: 'Figure3  Health Expenditure and its Proportion of the GDP of Chongqing in 2010',
+                subtext: 'Data comes from China Health and Family Planning Statistical Yearbook (2011)'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'center',
+        data:['Health Expenditure','Non-health Expenditure']
+    },
+    calculable : true,
+    series : [
+        {
+            
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '10',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:433, name:'Health Expenditure'},{value:7930, name:'Non-health Expenditure'},
+            ]
+        }
+    ]
+};
+
+option3gz = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: 'Figure3  Health Expenditure and its Proportion of the GDP of Guizhou Province in 2010',
+                subtext: 'Data comes from China Health and Family Planning Statistical Yearbook (2011)'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'center',
+        data:['Health Expenditure','Non-health Expenditure']
+    },
+    calculable : true,
+    series : [
+        {
+            
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '10',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:329, name:'Health Expenditure'},{value:4600, name:'Non-health Expenditure'},
+            ]
+        }
+    ]
+};
+
+option3yn = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: 'Figure3  Health Expenditure and its Proportion of the GDP of Yunan Province in 2010',
+                subtext: 'Data comes from China Health and Family Planning Statistical Yearbook (2011)'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'center',
+        data:['Health Expenditure','Non-health Expenditure']
+    },
+    calculable : true,
+    series : [
+        {
+            
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '10',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:509, name:'Health Expenditure'},{value:7227, name:'Non-health Expenditure'},
+            ]
+        }
+    ]
+};
+
+option3gs = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: 'Figure3  Health Expenditure and its Proportion of the GDP of Gansu Province in 2010',
+                subtext: 'Data comes from China Health and Family Planning Statistical Yearbook (2011)'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'center',
+        data:['Health Expenditure','Non-health Expenditure']
+    },
+    calculable : true,
+    series : [
+        {
+            
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '10',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:295, name:'Health Expenditure'},{value:4120, name:'Non-health Expenditure'},
+            ]
+        }
+    ]
+};
+
+option3xj = {
+     title : {
+        x: 'center',
+        y: 'bottom',
+        text: 'Figure3  Health Expenditure and its Proportion of the GDP of Xinjiang Province in 2010',
+                subtext: 'Data comes from China Health and Family Planning Statistical Yearbook (2011)'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'center',
+        data:['Health Expenditure','Non-health Expenditure']
+    },
+    calculable : true,
+    series : [
+        {
+            
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '10',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+{value:323, name:'Health Expenditure'},{value:4669, name:'Non-health Expenditure'},
+
+            ]
+        }
+    ]
+};
+
+        myChart.setOption(option); 
+         myChart1.setOption(optionqg);
+         myChart2.setOption(option3qg);
+        myChart.on('click', function (params) {
+    if(params.data.name=='广东'){
+        myChart1.setOption(optiongd);
+                 myChart2.setOption(option3gd)
+    }
+    if(params.data.name=='北京'){
+        myChart1.setOption(optionbj);
+        myChart2.setOption(option3bj)}
+    if(params.data.name=='天津'){
+        myChart1.setOption(optiontj);
+                 myChart2.setOption(option3tj)}
+    if(params.data.name=='河北'){
+        myChart1.setOption(optionhb1);
+          myChart2.setOption(option3hebei)
+    }           
+    if(params.data.name=='山西'){
+        myChart1.setOption(optionsx1);
+                  myChart2.setOption(option3shanxi)
+    }
+    if(params.data.name=='内蒙古'){
+        myChart1.setOption(optionnmg);
+             myChart2.setOption(option3nm)}
+    if(params.data.name=='辽宁'){
+        myChart1.setOption(optionln);
+               myChart2.setOption(option3ln);
+    }
+    if(params.data.name=='吉林'){
+        myChart1.setOption(optionjl);
+                      myChart2.setOption(option3jl)}
+    if(params.data.name=='黑龙江'){
+        myChart1.setOption(optionhlj);
+                       myChart2.setOption(option3hlj);
+    }
+    if(params.data.name=='上海'){
+        myChart1.setOption(optionsh)}        
+    if(params.data.name=='江苏'){
+        myChart1.setOption(optionjs);
+                           myChart2.setOption(option3js)} 
+    if(params.data.name=='浙江'){
+        myChart1.setOption(optionzj);
+                                   myChart2.setOption(option3zj)
+    } 
+    if(params.data.name=='安徽'){
+        myChart1.setOption(optionah);
+                                       myChart2.setOption(option3ah)}
+    if(params.data.name=='福建'){
+        myChart1.setOption(optionfj);
+                                               myChart2.setOption(option3fj)
+    }        
+    if(params.data.name=='江西'){
+        myChart1.setOption(optionjx);
+                                    myChart2.setOption(option3jx)
+    }  
+    if(params.data.name=='山东'){
+        myChart1.setOption(optionsd);
+                                    myChart2.setOption(option3sd)
+    }  
+    if(params.data.name=='河南'){
+        myChart1.setOption(optionhn);
+                                     myChart2.setOption(option3hn)
+    }         
+    if(params.data.name=='湖北'){
+        myChart1.setOption(optionhubei);
+                                    myChart2.setOption(option3hb)
+    }         
+    if(params.data.name=='湖南'){
+        myChart1.setOption(optionhn);
+                                            myChart2.setOption(option3hunan)
+    } 
+    if(params.data.name=='广西'){
+        myChart1.setOption(optiongx);
+                             myChart2.setOption(option3gx)
+    } 
+    if(params.data.name=='海南'){
+        myChart1.setOption(optionhainan)} 
+    if(params.data.name=='重庆'){
+        myChart1.setOption(optioncq);
+                myChart2.setOption(option3cq)
+    } 
+    if(params.data.name=='四川'){
+        myChart1.setOption(optionsc)} 
+    if(params.data.name=='贵州'){
+        myChart1.setOption(optiongz);
+                myChart2.setOption(option3gz)
+    } 
+    if(params.data.name=='云南'){
+        myChart1.setOption(optionyn);
+                myChart2.setOption(option3yn)
+    } 
+    if(params.data.name=='西藏'){
+        myChart1.setOption(optionxz)} 
+    if(params.data.name=='陕西'){
+        myChart1.setOption(optionshanxi)} 
+    if(params.data.name=='甘肃'){
+        myChart1.setOption(optiongs);
+     myChart2.setOption(option3gs)
+    } 
+    if(params.data.name=='青海'){
+        myChart1.setOption(optionqh)} 
+    if(params.data.name=='宁夏'){
+        myChart1.setOption(optionnx)} 
+    if(params.data.name=='新疆'){
+        myChart1.setOption(optionxj);
+       myChart2.setOption(option3xj)
+    } 
+
+
+
+        window.addEventListener("resize", function () {
+
+                      option.chart.resize();
+
+                  });
+
+});
+
+
+    </script>
+</body>
